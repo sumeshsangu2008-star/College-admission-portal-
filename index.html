@@ -1,0 +1,171 @@
+<header class="topbar">
+  <a class="brand" href="#top">
+    <span class="brand-mark" aria-hidden="true">K</span>
+    <span>Kaveri College<small>Arts &amp; Science, Chennai</small></span>
+  </a>
+  <nav aria-label="Main">
+    <a href="#programs">Programs</a>
+    <a href="#apply">Apply</a>
+    <a href="#track">Track application</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-kicker">Admissions 2026–27 are open</p>
+      <h1>Apply in 10 minutes. Hear back in 7 days.</h1>
+      <p>Fill one form, pick your program, and follow your application from submission to offer letter.</p>
+      <a class="btn btn-primary" href="#apply">Start application</a>
+      <a class="btn btn-ghost" href="#track">Track existing application</a>
+    </div>
+    <dl class="hero-facts">
+      <div><dt>Last date to apply</dt><dd>30 June 2027</dd></div>
+      <div><dt>Application fee</dt><dd>₹300</dd></div>
+      <div><dt>Selection</dt><dd>12th marks + short interview</dd></div>
+    </dl>
+  </section>
+
+  <section id="programs" class="section">
+    <h2>Programs you can apply to</h2>
+    <p class="lead">Every program is 3 years. Minimum 12th percentage is shown on each card.</p>
+    <div class="program-grid" id="programGrid"></div>
+  </section>
+
+  <section id="apply" class="section section-tint">
+    <h2>Application form</h2>
+    <p class="lead">Your progress saves on this device, so you can close the tab and come back.</p>
+
+    <ol class="stepper" id="stepper" aria-label="Application steps">
+      <li class="active">Personal details</li>
+      <li>Academics</li>
+      <li>Program</li>
+      <li>Review</li>
+    </ol>
+
+    <form id="admissionForm" novalidate>
+      <!-- Step 1 -->
+      <fieldset class="step active" data-step="0">
+        <legend>Personal details</legend>
+        <div class="grid">
+          <label class="field">Full name
+            <input type="text" name="fullName" autocomplete="name" required>
+            <span class="error"></span>
+          </label>
+          <label class="field">Date of birth
+            <input type="date" name="dob" required>
+            <span class="error"></span>
+          </label>
+          <label class="field">Gender
+            <select name="gender" required>
+              <option value="">Select</option>
+              <option>Female</option><option>Male</option><option>Other</option>
+            </select>
+            <span class="error"></span>
+          </label>
+          <label class="field">Mobile number
+            <input type="tel" name="phone" inputmode="numeric" maxlength="10" placeholder="10 digits" required>
+            <span class="error"></span>
+          </label>
+          <label class="field">Email
+            <input type="email" name="email" autocomplete="email" required>
+            <span class="error"></span>
+          </label>
+          <label class="field">City
+            <input type="text" name="city" value="Chennai" required>
+            <span class="error"></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Step 2 -->
+      <fieldset class="step" data-step="1">
+        <legend>Academic details</legend>
+        <div class="grid">
+          <label class="field">12th board
+            <select name="board" required>
+              <option value="">Select</option>
+              <option>Tamil Nadu State Board</option><option>CBSE</option><option>ICSE / ISC</option><option>Other</option>
+            </select>
+            <span class="error"></span>
+          </label>
+          <label class="field">Year of passing
+            <input type="number" name="year" min="2020" max="2027" placeholder="2026" required>
+            <span class="error"></span>
+          </label>
+          <label class="field">12th group
+            <select name="group" required>
+              <option value="">Select</option>
+              <option value="maths">Maths / Science</option>
+              <option value="commerce">Commerce</option>
+              <option value="arts">Arts / Humanities</option>
+            </select>
+            <span class="error"></span>
+          </label>
+          <label class="field">12th percentage
+            <input type="number" name="percent" min="0" max="100" step="0.01" placeholder="e.g. 87.5" required>
+            <span class="error"></span>
+          </label>
+          <label class="field field-wide">School name
+            <input type="text" name="school" required>
+            <span class="error"></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Step 3 -->
+      <fieldset class="step" data-step="2">
+        <legend>Choose your program</legend>
+        <p class="hint" id="eligibilityHint">Programs you don't qualify for are disabled, with the reason shown.</p>
+        <div class="choice-list" id="programChoices"></div>
+        <span class="error" id="programError"></span>
+      </fieldset>
+
+      <!-- Step 4 -->
+      <fieldset class="step" data-step="3">
+        <legend>Review and submit</legend>
+        <dl class="review" id="reviewList"></dl>
+        <label class="check">
+          <input type="checkbox" name="declare" required>
+          I confirm the details above are correct and I will bring original certificates for verification.
+        </label>
+        <span class="error" id="declareError"></span>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-ghost" id="backBtn" hidden>Back</button>
+        <button type="button" class="btn btn-primary" id="nextBtn">Continue</button>
+      </div>
+    </form>
+
+    <div class="success" id="successBox" hidden tabindex="-1">
+      <h3>Application submitted</h3>
+      <p>Your application ID is</p>
+      <p class="app-id" id="appId"></p>
+      <p>Save this ID. You need it to track your application.</p>
+      <button class="btn btn-primary" id="copyBtn" type="button">Copy ID</button>
+      <button class="btn btn-ghost" id="newBtn" type="button">Start another application</button>
+    </div>
+  </section>
+
+  <section id="track" class="section">
+    <h2>Track your application</h2>
+    <form id="trackForm" class="track-form" novalidate>
+      <label class="field">Application ID
+        <input type="text" id="trackInput" placeholder="KCAS26-XXXXXX" autocomplete="off">
+      </label>
+      <button class="btn btn-primary" type="submit">Check status</button>
+    </form>
+    <p class="error" id="trackError"></p>
+    <div id="trackResult" hidden>
+      <p id="trackSummary" class="track-summary"></p>
+      <ol class="timeline" id="timeline"></ol>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>Kaveri College of Arts &amp; Science, Chennai. Sample portal for practice; not a real institution.</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
